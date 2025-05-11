@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Dia das Mães 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe4e1, #ffdee9);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #d6336c;
+      margin-top: 70px;
+      animation: rainbow 4s infinite;
+    }
+
+    @keyframes rainbow {
+      0% { color: #ff69b4; }
+      25% { color: #ff1493; }
+      50% { color: #db7093; }
+      75% { color: #ff6ec7; }
+      100% { color: #ff69b4; }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #d6336c;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #c2185b;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 300px;
+      z-index: 1000;
+    }
+
+    .popup h2 {
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .popup p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      padding: 8px 15px;
+      background: #ffcccc;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts-container"></div>
+
+  <h1>Feliz Dia das Mães! 💐</h1>
+  <button onclick="mostrarPopup()">Clique aqui 💝</button>
+
+  <div class="popup" id="popup">
+    <h2>💌 Mensagem do Filho</h2>
+    <p>Mãe, você é minha inspiração para querer ter uma vida fora da caixa, para poder proporcionar a vida mais tranquilo e diferente do que o padrão no brasil, uma viagem pra monaco etc. você é meu tudo por mais que eu não demonstre muito, Te amo muito Mãe. 💖 </p>
+    <button class="close-btn" onclick="fecharPopup()">Fechar</button>
+  </div>
+
+  <script>
+    function mostrarPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function fecharPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Criar corações animados aleatórios
+    function criarCoracoes() {
+      const container = document.getElementById("hearts-container");
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+        heart.innerText = "💖";
+        container.appendChild(heart);
+
+        setTimeout(() => {
+          container.removeChild(heart);
+        }, 6000);
+      }
+    }
+
+    setInterval(criarCoracoes, 800);
+  </script>
+
+</body>
+</html>
